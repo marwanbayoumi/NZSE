@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">living space</string>
+    <string name="agent">Agent</string>
+    <string name="customer">Customer</string>
+    <string name="title_activity_kunde_card_view">KundeCardView</string>
+    <string name="title_activity_markler_card_view">MarklerCardView</string>
+    <string-array name="radioButtonChoices">
+        <item>Beliebt</item>
+        <item>Ungeeignet</item>
+        <item>Perfekt</item>
+    </string-array>
+    <string name="title_activity_main4">Main4Activity</string>
+    <string name="textview">TextView</string>
+    <string name="title_activity_new_wohnugs_objekt_view">NewWohnugsObjektView</string>
+</resources>
