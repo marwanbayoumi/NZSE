@@ -39,13 +39,16 @@ private Context context;
 
     holder.textViewHeader.setText(listItem.getAddresse());
     holder.textViewDesc.setText(listItem.getDasAngebot());
-    holder.textViewPreis.setText(String.valueOf(listItem.getPreis()));
+    holder.textViewPreis.setText(String.valueOf(listItem.getPreis())+" €");
+/*        holder.textViewHeader.setText("Addresse: "+listItem.getAddresse());
+        holder.textViewDesc.setText("Angebot: "+listItem.getDasAngebot());
+        holder.textViewPreis.setText("Preis: "+String.valueOf(listItem.getPreis())+" €");*/
 //    holder.textViewHits.setText(listItem.getHits());
     holder.listItemView.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             listItem.setHits(listItem.getHits()+1);
-
+            JsonHandler.updateJSON();
             Toast.makeText(context, listItem.getAddresse(), Toast.LENGTH_LONG).show();
             Intent intent = new Intent(context, MarklerCardView.class);
             intent.putExtra("name",listItem.getAddresse());

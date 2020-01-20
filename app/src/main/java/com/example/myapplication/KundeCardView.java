@@ -29,6 +29,7 @@ public class KundeCardView extends AppCompatActivity implements RadioButtonDialo
 
     @Override
     public void onPoitiveButtonClicked(String[] options, int position) {
+
     }
 
     @Override

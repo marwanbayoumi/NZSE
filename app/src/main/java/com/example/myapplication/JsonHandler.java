@@ -101,6 +101,11 @@ public abstract class JsonHandler {
         }
     }
 
+    public static void updateJSON(){
+
+    }
+
+
     /*takes the Arraylist from readJson and sorts it by price*/
     public static ArrayList<Wohnungsobjekt> sortByPrice(ArrayList<Wohnungsobjekt> w) {
         Collections.sort(w, new Wohnungsobjekt.PriceComparator());

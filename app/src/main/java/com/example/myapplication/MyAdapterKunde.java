@@ -37,7 +37,10 @@ public class MyAdapterKunde extends RecyclerView.Adapter<MyAdapterKunde.ViewHold
 
         holder.textViewHeader.setText(listItem.getAddresse());
         holder.textViewDesc.setText(listItem.getDasAngebot());
-        holder.textViewPreis.setText(String.valueOf(listItem.getPreis()));
+        holder.textViewPreis.setText(String.valueOf(listItem.getPreis())+" €");
+        /*holder.textViewHeader.setText("Addresse: "+listItem.getAddresse());
+        holder.textViewDesc.setText("Angebot "+listItem.getDasAngebot());
+        holder.textViewPreis.setText("Preis: "+ String.valueOf(listItem.getPreis())+" €");*/
         holder.listItemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
