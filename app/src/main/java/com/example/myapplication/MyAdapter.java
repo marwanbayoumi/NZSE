@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.json.JSONObject;
 
 import java.util.List;
 
@@ -19,7 +20,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
 private List<Wohnungsobjekt> wohnungsobjekts;
 private Context context;
-
 
     public MyAdapter(List<Wohnungsobjekt> wohnungsobjekts, Context context) {
         this.wohnungsobjekts = wohnungsobjekts;
@@ -36,7 +36,7 @@ private Context context;
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
     final Wohnungsobjekt listItem = wohnungsobjekts.get(position);
-
+    final JSONObject jsonObject = JsonHandler.JSONs.get(position);
     holder.textViewHeader.setText(listItem.getAddresse());
     holder.textViewDesc.setText(listItem.getDasAngebot());
     holder.textViewPreis.setText(String.valueOf(listItem.getPreis())+" €");
@@ -48,7 +48,7 @@ private Context context;
         @Override
         public void onClick(View v) {
             listItem.setHits(listItem.getHits()+1);
-            JsonHandler.updateJSON();
+            JsonHandler.updateJSON(jsonObject,listItem.getHits());
             Toast.makeText(context, listItem.getAddresse(), Toast.LENGTH_LONG).show();
             Intent intent = new Intent(context, MarklerCardView.class);
             intent.putExtra("name",listItem.getAddresse());

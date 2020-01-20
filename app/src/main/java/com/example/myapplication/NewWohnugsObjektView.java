@@ -39,6 +39,7 @@ public class NewWohnugsObjektView extends AppCompatActivity {
             wohnungsobjekt.setDasAngebot(0);
         }
         wohnungsobjekt.writeJson();
+        JsonHandler.print();
 //        wohnungsobjekt.timer();
 //        wohnungsobjekt.readJson();
         Toast.makeText(this, "Objekt Erfolgreich hinzugefügt" , Toast.LENGTH_SHORT).show();

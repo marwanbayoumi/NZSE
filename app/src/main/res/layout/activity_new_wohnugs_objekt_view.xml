@@ -12,6 +12,7 @@
         android:layout_height="186dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:background="#aabbcc"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView

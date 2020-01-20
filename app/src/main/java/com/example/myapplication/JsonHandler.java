@@ -22,7 +22,9 @@ import java.util.TimerTask;
 public abstract class JsonHandler {
 
     final static ArrayList<Wohnungsobjekt> wohnungen = new ArrayList<>();
-     File myFile = new File(Environment.getExternalStorageDirectory().getPath() + "/" + "myFile.txt");
+    static ArrayList<JSONObject> JSONs = new ArrayList<>();
+
+    File myFile = new File(Environment.getExternalStorageDirectory().getPath() + "/" + "myFile.txt");
 
     /*adds new Wohnungsobjekt to ArrayList*/
     public void addWohnnung(Wohnungsobjekt wohnung) {
@@ -43,6 +45,8 @@ public abstract class JsonHandler {
                 JSONArray jsonArray = new JSONArray(line);
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
+                    JSONs.add(jsonObject);
+
                     String address = jsonObject.getString("addresse");
                     double price = jsonObject.getDouble("preis");
                     int AnzahlZimmer = jsonObject.getInt("anzahl der zimmer");
@@ -101,10 +105,16 @@ public abstract class JsonHandler {
         }
     }
 
-    public static void updateJSON(){
-
+    public static void updateJSON(JSONObject jsonObject, int hits){
+        try {
+            jsonObject.put("Hits", hits);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
-
+public static void print(){
+    System.out.println(JSONs.size());
+}
 
     /*takes the Arraylist from readJson and sorts it by price*/
     public static ArrayList<Wohnungsobjekt> sortByPrice(ArrayList<Wohnungsobjekt> w) {
