@@ -12,8 +12,10 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.FileNotFoundException;
 import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
@@ -46,9 +48,13 @@ private Context context;
 //    holder.textViewHits.setText(listItem.getHits());
     holder.listItemView.setOnClickListener(new View.OnClickListener() {
         @Override
-        public void onClick(View v) {
+        public void onClick(View v)  {
             listItem.setHits(listItem.getHits()+1);
-            JsonHandler.updateJSON(jsonObject,listItem.getHits());
+//            try {
+//                JsonHandler.updateJSON(jsonObject,listItem.getHits());
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
             Toast.makeText(context, listItem.getAddresse(), Toast.LENGTH_LONG).show();
             Intent intent = new Intent(context, MarklerCardView.class);
             intent.putExtra("name",listItem.getAddresse());

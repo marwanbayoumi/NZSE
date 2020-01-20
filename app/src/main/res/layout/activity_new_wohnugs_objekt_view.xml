@@ -14,6 +14,7 @@
         app:layout_constraintStart_toStartOf="parent"
         android:background="#aabbcc"
         app:layout_constraintTop_toTopOf="parent">
+        <!--android:onClick=""-->
 
         <ImageView
             android:id="@+id/imageView"

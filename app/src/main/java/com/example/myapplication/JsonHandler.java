@@ -53,7 +53,7 @@ public abstract class JsonHandler {
                     String angebot = jsonObject.getString("Type");
                     int hits = jsonObject.getInt("Hits");
 
-                    Wohnungsobjekt deserializiedWohnung = new Wohnungsobjekt(address, AnzahlZimmer, price, angebot,hits);
+                    Wohnungsobjekt deserializiedWohnung = new Wohnungsobjekt(address, AnzahlZimmer, price, angebot, hits);
 //                    Wohnungsobjekt deserializiedWohnung = new Wohnungsobjekt(address, AnzahlZimmer, price, angebot);
                     read.add(deserializiedWohnung);
                 }
@@ -83,9 +83,11 @@ public abstract class JsonHandler {
             FileOutputStream fOut = new FileOutputStream(myFile, true);
             OutputStreamWriter myOutWriter = new OutputStreamWriter(fOut);
             JSONArray jsonarray = new JSONArray();
+//            int index = 0;
 
             for (Wohnungsobjekt i : wohnungen) {
                 JSONObject object = new JSONObject();
+//                object.put("id", index++);
                 object.put("addresse", i.getAddresse());
                 object.put("preis", i.getPreis());
                 object.put("anzahl der zimmer", i.getZimmer_anzahl());
@@ -105,16 +107,31 @@ public abstract class JsonHandler {
         }
     }
 
-    public static void updateJSON(JSONObject jsonObject, int hits){
-        try {
-            jsonObject.put("Hits", hits);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+//    public static void updateJSON(JSONObject jsonObject, int hits) throws JSONException {
+//        int id = jsonObject.getInt("id");
+//        String fname = "myFile.txt";
+//        try {
+//            File myFile = new File(Environment.getExternalStorageDirectory().getPath() + "/" + fname);
+//            FileInputStream fIn = new FileInputStream(myFile);
+//            BufferedReader myReader = new BufferedReader(new InputStreamReader(fIn));
+//            String line;
+//            while ((line = myReader.readLine()) != null) {
+//                JSONArray jsonArray = new JSONArray(line);
+//                for (int i = 0; i < jsonArray.length(); i++) {
+//                    JSONObject jsonObj = jsonArray.getJSONObject(i);
+//                    if(id == jsonObj.getInt("id")){
+//                        jsonObj.put("Hits",hits);
+//                    }
+//                }
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
+
+    public static void print() {
+        System.out.println(JSONs.size());
     }
-public static void print(){
-    System.out.println(JSONs.size());
-}
 
     /*takes the Arraylist from readJson and sorts it by price*/
     public static ArrayList<Wohnungsobjekt> sortByPrice(ArrayList<Wohnungsobjekt> w) {
