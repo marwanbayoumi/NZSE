@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import android.os.Environment;
 
+import org.jetbrains.annotations.Contract;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -23,12 +24,15 @@ public abstract class JsonHandler {
 
     final static ArrayList<Wohnungsobjekt> wohnungen = new ArrayList<>();
     static ArrayList<JSONObject> JSONs = new ArrayList<>();
+    static ArrayList<Wohnungsobjekt> persistent = new ArrayList<>();
+
 
     File myFile = new File(Environment.getExternalStorageDirectory().getPath() + "/" + "myFile.txt");
 
     /*adds new Wohnungsobjekt to ArrayList*/
     public void addWohnnung(Wohnungsobjekt wohnung) {
         wohnungen.add(wohnung);
+        persistent.add(wohnung);
     }
 
     /*reads the json file and returns an ArrayList<Wohnungsobjekt> which we can manipulate*/
@@ -83,11 +87,10 @@ public abstract class JsonHandler {
             FileOutputStream fOut = new FileOutputStream(myFile, true);
             OutputStreamWriter myOutWriter = new OutputStreamWriter(fOut);
             JSONArray jsonarray = new JSONArray();
-//            int index = 0;
+            int index= 0;
 
             for (Wohnungsobjekt i : wohnungen) {
                 JSONObject object = new JSONObject();
-//                object.put("id", index++);
                 object.put("addresse", i.getAddresse());
                 object.put("preis", i.getPreis());
                 object.put("anzahl der zimmer", i.getZimmer_anzahl());
@@ -134,14 +137,15 @@ public abstract class JsonHandler {
     }
 
     /*takes the Arraylist from readJson and sorts it by price*/
-    public static ArrayList<Wohnungsobjekt> sortByPrice(ArrayList<Wohnungsobjekt> w) {
+    /* public static ArrayList<Wohnungsobjekt> sortByPrice(ArrayList<Wohnungsobjekt> w) {
         Collections.sort(w, new Wohnungsobjekt.PriceComparator());
         return w;
-    }
+    }*/
 
     /*takes the Arraylist from readJson and sorts it by hits*/
-    public static ArrayList<Wohnungsobjekt> sortByHits(ArrayList<Wohnungsobjekt> w) {
+    /* public static ArrayList<Wohnungsobjekt> sortByHits(ArrayList<Wohnungsobjekt> w) {
         Collections.sort(w, new Wohnungsobjekt.HitsComparator());
         return w;
-    }
+    }*/
 }
+
